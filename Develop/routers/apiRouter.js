@@ -2,17 +2,15 @@ const apiRouter = require('express').Router();
 const { v4: uuidv4 } = require('uuid');
 const util = require('util');
 const fs = require('fs');
-const notes = util.promisify(fs.readFile, '../db/db.json');
+const readNotes = util.promisify(fs.readFile);
+
 
 apiRouter.get('/notes', (req, res) => {
     console.log(req.method + 'Request sent');
-    const readNotes = async (notes) => {
-        const files = await notes();
-        console.log(files);
-    };
-    readNotes(notes)
+    readNotes('Develop/db/db.json', 'utf-8')
     .then(data => {
-        return res.json(data);
+        console.log(data);
+        return res.json(JSON.parse(data)); 
     })
     .catch(err => console.error(err));
 })
@@ -26,7 +24,7 @@ apiRouter.post('/notes', (req, res) => {
             text,
             id: uuidv4(),
         }
-        console.log('Note is reciebed');
+        console.log('Note is recieved');
       //  res.json('Note is recieved');
         notes.push(newNote);
     } else {
