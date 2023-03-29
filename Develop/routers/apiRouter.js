@@ -27,13 +27,11 @@ apiRouter.post('/notes', (req, res) => {
     
     readNotes('Develop/db/db.json', 'utf-8')
         .then(data => {
-            console.log(data);
             const parsedNotes = JSON.parse(data);
-            console.log(typeof newNote);
-            console.log(parsedNotes);
             parsedNotes.push(newNote);
+            writeNotes('Develop/db/db.json', JSON.stringify(parsedNotes));
             console.log('Parsed and pushed');
-            writeNotes('Develop/db/db.json', JSON.stringify(newNote));
+            return res.json(parsedNotes);
         })
         .catch(err => console.log(err));
 })
