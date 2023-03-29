@@ -3,6 +3,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: orange;
 }
 
 .save-note {
@@ -22,12 +23,14 @@ body {
   width: 100%;
   outline: none;
   border: none;
+  background-color: orange;
 }
 
 .note-textarea {
   resize: none;
   height: calc(100% - 63px);
   padding-top: 15px;
+  background-color: orange;
 }
 
 .note-title {
@@ -50,6 +53,7 @@ body {
 
 .list-container {
   padding-left: 0;
+  background-color: orange;
 }
 
 .list-container .list-group,
