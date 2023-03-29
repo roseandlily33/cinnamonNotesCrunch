@@ -12,7 +12,6 @@ app.use(express.static('Develop/public'));
 app.use('/api', apiRouter);
 app.use('/', htmlRouter);
 
-
 app.listen(PORT, () => {
     console.log(`Running on port ${PORT}`)
 });
