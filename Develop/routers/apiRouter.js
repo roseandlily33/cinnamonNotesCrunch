@@ -2,11 +2,11 @@ const apiRouter = require('express').Router();
 const { v4: uuidv4 } = require('uuid');
 const util = require('util');
 const fs = require('fs');
-const notes = util.promisify(fs.readFile);
+const notes = util.promisify(fs.readFile, '../db/db.json');
 
 apiRouter.get('/notes', (req, res) => {
     console.log(req.method + 'Request sent');
-    const readNotes = async () => {
+    const readNotes = async (notes) => {
         const files = await notes();
         console.log(files);
     };
